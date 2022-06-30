@@ -46,9 +46,9 @@ func binaryAdd(a, b int) int {
 	for b > 0 {
 		// if both bits are 1, return 1; else return 0
 		carry = a & b
-		// Sum of bits of a ^ b
+		// sum bits using XOR
 		a = a ^ b
-		// Shift the carry bit by one bit in left side
+		// leftshift carry and assign to b
 		b = carry << 1
 	}
 	return a
