@@ -9,6 +9,17 @@ module.exports = {
     },
     develop: {
       port: 8545
+    },
+    kovan: {
+      provider: function() {
+        return new HDWalletProvider(
+          process.env.MNEMONIC,
+          `https://kovan.infura.io/${process.env.INFURA_API_KEY}`
+        )
+      },
+      gas: 5000000,
+      gasPrice: 25000000000,
+      network_id: 42
     }
   }
 };

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.7;
+pragma solidity >=0.4.0;
+pragma experimental ABIEncoderV2;
 
 interface ERC20Basic {
     function balanceOf(address tokenOwner) external view returns (uint256);
@@ -13,12 +14,19 @@ contract Reader {
         uint256 balance;
     }
 
-    function getBalances(address walletAddress, address[] memory tokens) public view returns (TokenBalance[] memory) {
-            TokenBalance[] memory results = new TokenBalance[](tokens.length);
+    function getBalances(
+        address walletAddress, 
+        address[] memory tokens
+        ) public view returns (
+            TokenBalance[] memory
+        ) {
+            TokenBalance[] memory res = new TokenBalance[](tokens.length);
             for (uint i = 0; i < tokens.length; i++) {
-                results[i] = TokenBalance(tokens[i], 
-                    ERC20Basic(tokens[i]).balanceOf(walletAddress));
+                res[i] = TokenBalance(
+                    tokens[i], 
+                    ERC20Basic(tokens[i]).balanceOf(walletAddress)
+                );
             }
-            return results;
+            return res;
     }
 }
