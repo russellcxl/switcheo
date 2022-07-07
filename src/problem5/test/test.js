@@ -22,14 +22,14 @@ const main = async () => {
 	const balances = await contract.getBalances(ADDRESS, TOKENS);
 
     // return in expected struct
-	balances.map(bal => {
+	const output = balances.map(bal => {
         return {
             token: bal.token,
             balance: bal.balance
         }
     });
 
-	console.log(balances)
+	console.log(output)
 };
 
 main()
