@@ -14,12 +14,7 @@ contract Reader {
         uint256 balance;
     }
 
-    function getBalances(
-        address walletAddress, 
-        address[] memory tokens
-        ) public view returns (
-            TokenBalance[] memory
-        ) {
+    function getBalances(address walletAddress, address[] memory tokens) public view returns (TokenBalance[] memory) {
             TokenBalance[] memory res = new TokenBalance[](tokens.length);
             for (uint i = 0; i < tokens.length; i++) {
                 res[i] = TokenBalance(
