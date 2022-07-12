@@ -14,6 +14,12 @@ contract Reader {
         uint256 balance;
     }
 
+    // EVM stores info in 3 places -- storage, memory, stack
+    // storage:     every contract has its own storage; persists between function calls; expensive
+    // memory:      temporary; no persistance between function calls; inexpensive
+    // stack:       holds small local variables; very cheap but has limited space
+    
+    // since this is a one-time use function, we can store the results in memory 
     function getBalances(address walletAddress, address[] memory tokens) public view returns (TokenBalance[] memory) {
             TokenBalance[] memory res = new TokenBalance[](tokens.length);
             for (uint i = 0; i < tokens.length; i++) {
